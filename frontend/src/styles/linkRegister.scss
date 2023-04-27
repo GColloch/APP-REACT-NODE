@@ -1,0 +1,13 @@
+@import './mixins';
+@import './variables';
+
+.linkRegister {
+    max-width: 45%;
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    background-color: rgb(106, 139, 127);
+    border-radius: 5%;
+    margin-bottom: 20px;
+}
