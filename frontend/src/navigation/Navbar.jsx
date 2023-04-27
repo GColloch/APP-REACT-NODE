@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import '../styles/Navbar.scss'
 import { useAuth } from '../contexts/AuthContext'
 import CartIcon from '../components/CartIcon'
@@ -11,57 +11,57 @@ function Navbar () {
       <nav className='navbar'>
         <img src='/assets/img/logo.png' />
         <ul>
-          {/* <Link to='/'>
+          <NavLink to='/' className={(nav) => (nav.isActive ? 'nav-active' : '')}>
             <li>
               Accueil
             </li>
-          </Link>
-          <Link to='/about'>
+          </NavLink>
+          <NavLink to='/about' className={(nav) => (nav.isActive ? 'nav-active' : '')}>
             <li>
               A propos
             </li>
-          </Link> */}
-          <Link to='/restaurants'>
+          </NavLink>
+          <NavLink to='/restaurants' className={(nav) => (nav.isActive ? 'nav-active' : '')}>
             <li>
               Restaurants
               {
                 isAuthenticated && (
                   <ul>
-                    <Link to='/add-restaurant'>
+                    <NavLink to='/add-restaurant' className={(nav) => (nav.isActive ? 'nav-active' : '')}>
                       <li>
                         Ajouter un restaurant
                       </li>
-                    </Link>
+                    </NavLink>
                   </ul>
                 )
               }
             </li>
-          </Link>
+          </NavLink>
           {
             isAuthenticated
               ? <li>Hello, {user.firstName}</li>
               : (
-                <Link to='/auth'>
+                <NavLink to='/auth' className={(nav) => (nav.isActive ? 'nav-active' : '')}>
                   <li>
                     S'incrire / Se connecter
                   </li>
-                </Link>
+                </NavLink>
                 )
           }
-          <Link to='/cart'>
+          <NavLink to='/cart'>
             <li>
               <CartIcon />
             </li>
-          </Link>
+          </NavLink>
         </ul>
         <button className='menu-btn'>H</button>
       </nav>
       <nav className='mobile-menu'>
         <button className='mobile-menu-close'>X</button>
-        <Link to='/'>Accueil</Link>
-        <Link to='/'>Accueil</Link>
-        <Link to='/'>Accueil</Link>
-        <Link to='/'>Accueil</Link>
+        <NavLink to='/'>Accueil</NavLink>
+        <NavLink to='/'>Accueil</NavLink>
+        <NavLink to='/'>Accueil</NavLink>
+        <NavLink to='/'>Accueil</NavLink>
       </nav>
     </>
   )
