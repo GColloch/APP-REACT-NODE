@@ -1,16 +1,26 @@
 import { NavLink } from 'react-router-dom'
-import '../styles/Navbar.scss'
+import { useRef } from 'react'
+import { FaBars, FaTimes } from 'react-icons/fa'
 import { useAuth } from '../contexts/AuthContext'
 import CartIcon from '../components/CartIcon'
+import '../styles/Navbar.scss'
 
 function Navbar () {
   const { state: { isAuthenticated, user } } = useAuth()
+  const navRef = useRef()
+
+  const showNavbar = () => {
+    navRef.current.classList.toggle(
+      'responsive_nav'
+    )
+  }
 
   return (
     <>
-      <nav className='navbar'>
+      <header>
+
         <img src='/assets/img/logo.png' />
-        <ul>
+        <nav ref={navRef}>
           <NavLink to='/' className={(nav) => (nav.isActive ? 'nav-active' : '')}>
             <li>
               Accueil
@@ -53,16 +63,20 @@ function Navbar () {
               <CartIcon />
             </li>
           </NavLink>
-        </ul>
-        <button className='menu-btn'>H</button>
-      </nav>
-      <nav className='mobile-menu'>
-        <button className='mobile-menu-close'>X</button>
-        <NavLink to='/'>Accueil</NavLink>
-        <NavLink to='/'>Accueil</NavLink>
-        <NavLink to='/'>Accueil</NavLink>
-        <NavLink to='/'>Accueil</NavLink>
-      </nav>
+          <button
+            className='nav-btn nav-close-btn'
+            onClick={showNavbar}
+          >
+            <FaTimes />
+          </button>
+        </nav>
+        <button
+          className='nav-btn'
+          onClick={showNavbar}
+        >
+          <FaBars />
+        </button>
+      </header>
     </>
   )
 }
