@@ -23,14 +23,10 @@ const initialState = {
 
 const AuthReducer = (state, action) => {
   switch (action.type) {
-    case actionTypes.LOGIN_SUCCESS:
-      return {
-        isAuthenticated: true,
-        token: action.data.jwt,
-        user: action.data.user,
-        loading: false,
-        error: null
-      }
+    case actionTypes.LOGIN_SUCCESS: return {
+      isAuthenticated: true,
+      token: action.data.token
+    }
     case actionTypes.LOGIN_FAILURE:
       return {
         ...initialState,
@@ -65,11 +61,14 @@ const AuthContextFactory = (dispatch) => ({
   login: async (credentials) => {
     try {
       const result = await login(credentials)
-      toast.success(`Hello, ${result.user.firstName}`)
+      toast.success(`Hello, ${result._user.firstName}`)
       dispatch({
         type: actionTypes.LOGIN_SUCCESS,
         data: result
       })
+
+      // Stocker le token dans les en-têtes de chaque requête HTTP envoyée depuis le client
+      window.localStorage.setItem('AUTH_TOKEN', result.jwt)
     } catch (error) {
       toast.error('Identifiant ou mot de passe invalide')
       dispatch({

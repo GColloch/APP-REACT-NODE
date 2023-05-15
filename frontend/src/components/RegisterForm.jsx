@@ -1,80 +1,44 @@
-import { useState } from 'react'
-import TextInput from './TextInput'
-import SubmitButton from './SubmitButton'
+import React from 'react'
+import '../styles/signin.scss'
 
-function RegisterForm ({ onSubmit }) {
-  const [userInfos, setUserInfos] = useState({
-    email: 'toto@tata2.fr',
-    username: 'RiusmaX',
-    password: 'secret',
-    firstName: 'Marius',
-    lastName: 'Sergent'
-  })
-
-  const handleChange = (event) => {
-    const inputName = event.target.name
-    const inputValue = event.target.value
-    setUserInfos({
-      ...userInfos,
-      [inputName]: inputValue
-    })
-  }
-
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    onSubmit(userInfos)
-  }
-
+function Inscription () {
   return (
-    <>
-      <h2>Inscription</h2>
-      <form noValidate onSubmit={handleSubmit}>
-        <br />
-        <TextInput
-          label="Nom d'utilisateur"
-          type='text'
-          name='username'
-          onChange={handleChange}
-          value={userInfos.username}
-        />
-        <br />
-        <TextInput
-          label='Prénom'
-          type='text'
-          name='firstName'
-          onChange={handleChange}
-          value={userInfos.firstName}
-        />
-        <br />
-        <TextInput
-          label='Nom'
-          type='text'
-          name='lastName'
-          onChange={handleChange}
-          value={userInfos.lastName}
-        />
-        <br />
-        <TextInput
-          label='Email'
-          type='email'
-          name='email'
-          placeholder='toto@tata.fr'
-          onChange={handleChange}
-          value={userInfos.email}
-        />
-        <br />
-        <TextInput
-          label='Mot de passe'
-          type='password'
-          name='password'
-          onChange={handleChange}
-          value={userInfos.password}
-        />
-        <br />
-        <SubmitButton value='Créer un compte' />
-      </form>
-    </>
+    <html lang='en'>
+      <head>
+        <meta charset='utf-8' />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <title>Inscription</title>
+        <link href='/assets/bootstrap/dist/css/bootstrap.min.css' rel='stylesheet' />
+        <link href='/assets/styles_personalises/signin.css' rel='stylesheet' />
+      </head>
+      <body className='text-center'>
+        <main className='form-signin w-100 m-auto'>
+          <form action='/inscription' method='post'>
+            <img className='mb-4' src='/images/drcmind.png' alt='' width='72' height='72' />
+            <h1 className='h3 mb-3 fw-normal'>Inscrivez-vous</h1>
+
+            <div className='form-floating'>
+              <input type='text' name='nom' className='form-control' id='floatingPassword' placeholder='Votre nom' />
+              <label htmlFor='floatingPassword'>Nom</label>
+            </div>
+
+            <div className='form-floating'>
+              <input type='email' name='email' className='form-control' id='floatingInput' placeholder='name@example.com' />
+              <label htmlFor='floatingInput'>Adresse e-mail</label>
+            </div>
+            <div className='form-floating'>
+              <input type='password' name='password' className='form-control' id='floatingPassword' placeholder='Password' />
+              <label htmlFor='floatingPassword'>Mot de passe</label>
+            </div>
+
+            <button className='w-100 btn btn-lg btn-primary' type='submit'>Inscription</button>
+            <p><a href='/connexion'>Connectez-vous </a> Si vous avez déjà un compte</p>
+            <p className='mt-5 mb-3 text-muted'>&copy; 2022</p>
+          </form>
+        </main>
+      </body>
+    </html>
   )
 }
 
-export default RegisterForm
+export default Inscription
