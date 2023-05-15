@@ -18,7 +18,7 @@ function Navbar () {
     <>
       <header>
 
-        <img src='/assets/img/logo.png' />
+        <img src='../assets/img/logo.png' />
         <nav ref={navRef}>
           <NavLink to='/' className={(nav) => (nav.isActive ? 'nav-active' : '')}>
             <li>

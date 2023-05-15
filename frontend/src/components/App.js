@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
-import Cart from '../components/Cart'
-import ShoppingList from '../components/ShoppingList'
+import Cart from './Cart'
+import Footer from './Footer'
+import ShoppingList from './ShoppingList'
 import '../styles/Layout.scss'
 
 function App () {
@@ -16,6 +17,7 @@ function App () {
         <Cart cart={cart} updateCart={updateCart} />
         <ShoppingList cart={cart} updateCart={updateCart} />
       </div>
+      <Footer />
     </div>
   )
 }

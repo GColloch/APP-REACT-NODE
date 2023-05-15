@@ -11,3 +11,28 @@ img {
   width: 50%;
   margin-right: 20px;
 }
+
+@media only screen and (min-width: 300px) {
+	.text {
+    margin-top: 100px;
+		font-size: 7px;
+    max-width: 40%;
+	}
+
+}
+
+@media only screen and (min-width: 500px) {
+	.text {
+    margin-top: 100px;
+		font-size: 10px;
+    max-width: 40%;
+	}
+
+}
+
+@media only screen and (min-width: 1000px) {
+	.text {
+		font-size: 17px;
+	}
+
+}
